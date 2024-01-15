@@ -1,8 +1,7 @@
 <template>
   <v-app>
-    <v-app-bar class="bg-light-blue-darken-3">
-      <v-app-bar-title>Diamond</v-app-bar-title>
-
+    <v-app-bar class="bg-blue-darken-4">
+      <v-img src="./assets/CVG-IMAGE.png" height="50" width="50" contain alt="Logo CVG" style="margin-right: 63rem;" />
       <template v-if="this.$store.getters.getUsuario == null">
         <v-btn prepend-icon="mdi-login" to="/">
           Login
@@ -14,12 +13,13 @@
           Inicio
         </v-btn>
         <v-btn prepend-icon="mdi-account" to="/cliente">
-          Cliente
+          Proyectos
         </v-btn>
         <v-btn prepend-icon="mdi-logout" @click="logout">
           Logout
         </v-btn>
       </template>
+
 
     </v-app-bar>
     <v-main>

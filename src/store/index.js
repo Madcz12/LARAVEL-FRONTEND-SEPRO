@@ -2,7 +2,6 @@ import { createStore } from 'vuex'
 
 export default createStore({
     state: {
-        // crear variables globales
         usuario: null,
         token: null
     },
@@ -12,30 +11,26 @@ export default createStore({
         },
         getToken(state) {
             return state.token
-        },
+        }
     },
     mutations: {
-        // modificar el valor del usaurio
         setUsuario(state, usuario) {
             state.usuario = usuario
         },
         setToken(state, token) {
             state.token = token
-        },
+        }
     },
     actions: {
-        // login 
         login(context, data) {
             context.commit('setUsuario', data.usuario)
             context.commit('setToken', data.token)
-
-            localStorage.setItem('userData', JSON.stringify(data));
+            localStorage.setItem('userData', JSON.stringify(data))
         },
-        //logout
         logout(context) {
             context.commit('setUsuario', null)
             context.commit('setToken', null)
-            localStorage.removeItem('userData');
+            localStorage.removeItem('userData')
         }
     }
-});
+})

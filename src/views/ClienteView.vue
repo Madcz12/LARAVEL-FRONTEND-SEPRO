@@ -1,14 +1,14 @@
 <template>
     <v-container fluid>
         <h1>Clientes</h1>
-        <v-row>
+        <!--         <v-row>
             <v-col xs="12" sm="10" md="8" lg="6" xl="4" xxl="3">
                 <v-text-field label="Nombre" maxLength="50" counter="indigo" clearable placeholder="Nombre del Cliente"
                     v-model="cliente.nombre"></v-text-field>
                 <v-text-field label="Telefono" maxLength="10" counter="indigo" clearable placeholder="Telefono del Cliente"
                     v-model="cliente.telefono"></v-text-field>
-                <v-select color="indigo" label="pais" :items="paises" item-value="id" item-title="nombre_pais"
-                    v-model="cliente.pais_id"></v-select>
+                <v-select color="indigo" label="pais" :items="paises" item-value="id" item-title="nombre"
+                    v-model="cliente.fk_pais"></v-select>
                 <v-btn prepend-icon="mdi-check" color="indigo" block @click="agregarCliente">Agregar</v-btn>
             </v-col>
             <v-col xs="12" sm="11" md="10" lg="9" xl="8" xxl="7">
@@ -27,7 +27,7 @@
                                 <tr v-for="(cliente, i) in clientes" :key="i">
                                     <th>{{ cliente.id }}</th>
                                     <th>{{ cliente.nombre }}</th>
-                                    <th>{{ cliente.pais_id }}</th>
+                                    <th>{{ cliente.fk_pais }}</th>
                                     <th><v-btn-group>
                                             <v-btn icon="mdi-eye" color="indigo"
                                                 @click="obtenerCliente(cliente.id, 1)"></v-btn>
@@ -42,7 +42,8 @@
                     </v-card-text>
                 </v-card>
             </v-col>
-        </v-row>
+        </v-row> -->
+        <WizardFormVue />
         <v-snackbar v-model="alertaEstado" color="blue-accent-1" timeout="2000">
             {{ mensaje }}
         </v-snackbar>
@@ -53,7 +54,7 @@
                     <v-list>
                         <v-list-item prepend-icon="mdi-account" :title="datos.nombre"></v-list-item>
                         <v-list-item prepend-icon="mdi-phone" :title="datos.telefono"></v-list-item>
-                        <v-list-item prepend-icon="mdi-earth" :title="datos.pais_id"></v-list-item>
+                        <v-list-item prepend-icon="mdi-earth" :title="datos.fk_pais"></v-list-item>
                     </v-list>
                 </v-card-text>
             </v-card>
@@ -66,8 +67,8 @@
                         placeholder="Nombre del Cliente" v-model="datos.nombre"></v-text-field>
                     <v-text-field label="Telefono" max-length="9" counter color="indigo" clearable
                         placeholder="Telefono del Cliente" v-model="datos.telefono"></v-text-field>
-                    <v-select color="indigo" label="Pais" :items="paises" item-value="id" item-title="nombre_pais"
-                        v-model="datos.pais_id"></v-select>
+                    <v-select color="indigo" label="Pais" :items="paises" item-value="id" item-title="nombre"
+                        v-model="datos.fk_pais"></v-select>
                     <v-btn prepend-icon="mdi-check" color="indigo" block @click="modificarCliente(datos.id)">
 
                     </v-btn>
@@ -80,6 +81,7 @@
 <script>
 import axios from 'axios'
 export default {
+
     name: 'ClienteView',
     data() {
         return {
@@ -93,8 +95,6 @@ export default {
             dialogTwo: false,
             config: {
                 headers: {
-                    //traemos el token que esta almacenado en el localstore. el $ es para acceder remotamente a carpetas
-                    // del proyecto 
                     'Authorization': 'Bearer ' + this.$store.getters.getToken
                 }
             }
@@ -139,12 +139,10 @@ export default {
                 )
                 .catch(error => console.log('Ha Ocurrido un Error :(' + error))
         },
-        // metodo para el modal
+        // metodo para el modal //
         obtenerCliente(id, action) {
-            // cambiar la visibilidad del modal
             if (action == 1) {
                 this.dialogOne = true
-                // realizar la petición
                 axios.get(`http://127.0.0.1:8000/api/cliente/find/${id}`, this.config)
                     .then(
                         response => {
@@ -157,8 +155,6 @@ export default {
                     .catch(error => console.log('Ha Ocurrido un Error :(' + error))
             } else {
                 this.dialogTwo = true
-
-                // realizar la petición
                 axios.get(`http://127.0.0.1:8000/api/cliente/find2/${id}`, this.config)
                     .then(
                         response => {
@@ -170,20 +166,23 @@ export default {
                     )
                     .catch(error => console.log('Ha Ocurrido un Error :(' + error))
             }
+            // realiza la peticion
+
         },
+        // editar cliente
         modificarCliente(id) {
             axios.put(`http://127.0.0.1:8000/api/cliente/update/${id}`, this.datos, this.config)
                 .then(
                     response => {
                         if (response.data.code == 200) {
-
+                            // recargar la tabla de clientes 
+                            this.obtenerClientes()
                             // ocultar cuadro de dialogo
                             this.dialogTwo = false
                             // cambiar mensaje y visibilidad de la alerta
                             this.alertaEstado = true
                             this.mensaje = response.data.data
-                            // recargar la tabla de clientes 
-                            this.obtenerClientes()
+
                         }
                     }
                 )
