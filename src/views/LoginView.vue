@@ -1,18 +1,17 @@
 <template>
-    <v-container fluid>
+    <v-container fluid class="bg-image">
         <v-row justify="center">
             <v-col xs="12" sm="4" md="4" lg="4" xl="4" xxl="4">
-                <v-card>
-                    <v-img height="150" cover
-                        src="https://www.salesforce.com/content/dam/web/es_mx/blog/seguimiento-de-ventas-como-hacer.jpg">
+                <v-card class="card-form">
+                    <v-img height="150" width="210" cover src="../assets/CVG-LOGIN-IMG.jpg" style="margin-left: 8.4rem;">
                     </v-img>
+                    <v-img class="namesys"></v-img>
                     <v-card-text>
-                        <h2 class="text-blue-grey-darken-2">Sistema de Ventas</h2>
-                        <p class="text-blue-grey-darken-2">Login</p>
+                        <h1 style="margin-left: 11rem;">SEPRO</h1>
                         <br>
                         <v-form>
-                            <v-text-field label="Correo" placeholder="correo@ventasdiamond.com" counter maxLength="70"
-                                color="indigo" clearable prepend-inner-icon="mdi-email" v-model="usuario.email">
+                            <v-text-field label="Username" placeholder="correo@ventasdiamond.com" counter maxLength="70"
+                                color="indigo" clearable prepend-inner-icon="mdi-user" v-model="usuario.username">
 
                             </v-text-field>
                             <v-text-field label="Contraseña" placeholder="*********" counter maxLength="15" color="indigo"
@@ -40,7 +39,7 @@ export default {
     data() {
         return {
             usuario: {
-                email: '',
+                username: '',
                 password: ''
             },
             alertaEstado: false,
@@ -76,6 +75,21 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
+<style scoped>
+.bg-image {
+    background-image: url(/public/bgroad-new.jpg);
+    background-size: cover;
+    height: 100%;
+    /* Ajusta la imagen para cubrir todo el elemento */
+    background-position: center;
+    /* Centra la imagen */
+}
 
+.card-form {
+    border: 4px solid black;
+}
+
+.namesys {
+    background-image: url(/public/SEPRO.jpg);
+}
 </style>
