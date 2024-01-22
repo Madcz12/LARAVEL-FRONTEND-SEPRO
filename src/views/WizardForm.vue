@@ -2,7 +2,7 @@
     <div>
         <form-wizard shape="tab" color="#e67e22" :show-progress="false" vertical-tabs>
             <tab-content title="Fase 1">
-                <h1>Inicio</h1>
+                <h1>Inicio Hola mundo</h1>
                 <v-row>
                     <v-col xs="12" sm="10" md="10" lg="8" x="10" xxl="10">
                         <v-card variant="outlined">
