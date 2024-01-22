@@ -1,48 +1,5 @@
 <template>
     <v-container fluid>
-        <h1>Clientes</h1>
-        <!--         <v-row>
-            <v-col xs="12" sm="10" md="8" lg="6" xl="4" xxl="3">
-                <v-text-field label="Nombre" maxLength="50" counter="indigo" clearable placeholder="Nombre del Cliente"
-                    v-model="cliente.nombre"></v-text-field>
-                <v-text-field label="Telefono" maxLength="10" counter="indigo" clearable placeholder="Telefono del Cliente"
-                    v-model="cliente.telefono"></v-text-field>
-                <v-select color="indigo" label="pais" :items="paises" item-value="id" item-title="nombre"
-                    v-model="cliente.fk_pais"></v-select>
-                <v-btn prepend-icon="mdi-check" color="indigo" block @click="agregarCliente">Agregar</v-btn>
-            </v-col>
-            <v-col xs="12" sm="11" md="10" lg="9" xl="8" xxl="7">
-                <v-card>
-                    <v-card-text>
-                        <v-table>
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>NOMBRE</th>
-                                    <th>PAIS</th>
-                                    <th>OPCIONES</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="(cliente, i) in clientes" :key="i">
-                                    <th>{{ cliente.id }}</th>
-                                    <th>{{ cliente.nombre }}</th>
-                                    <th>{{ cliente.fk_pais }}</th>
-                                    <th><v-btn-group>
-                                            <v-btn icon="mdi-eye" color="indigo"
-                                                @click="obtenerCliente(cliente.id, 1)"></v-btn>
-                                            <v-btn icon="mdi-pencil" color="green"
-                                                @click="obtenerCliente(cliente.id, 2)"></v-btn>
-                                            <v-btn icon="mdi-delete" color="red"
-                                                @click="eliminarCliente(cliente.id)"></v-btn>
-                                        </v-btn-group></th>
-                                </tr>
-                            </tbody>
-                        </v-table>
-                    </v-card-text>
-                </v-card>
-            </v-col>
-        </v-row> -->
         <WizardFormVue />
         <v-snackbar v-model="alertaEstado" color="blue-accent-1" timeout="2000">
             {{ mensaje }}

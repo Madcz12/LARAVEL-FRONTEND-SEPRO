@@ -12,7 +12,7 @@
         <v-btn prepend-icon="mdi-home" to="/welcome">
           Inicio
         </v-btn>
-        <v-btn prepend-icon="mdi-account" to="/cliente">
+        <v-btn prepend-icon="mdi-file" to="/cliente">
           Proyectos
         </v-btn>
         <v-btn prepend-icon="mdi-logout" @click="logout">

@@ -1,66 +1,218 @@
 <template>
     <div>
-        <form-wizard>
+        <form-wizard shape="tab" color="#e67e22" :show-progress="false" vertical-tabs>
             <tab-content title="Fase 1">
+                <h1>Inicio</h1>
                 <v-row>
-                    <v-col xs="12" sm="10" md="8" lg="6" xl="4" xxl="3">
-                        <v-form ref="form">
-                            <v-text-field v-model="nombreProyecto" label="Nombre del Proyecto" required></v-text-field>
-                            <v-text-field v-model="sector" label="Sector" required></v-text-field>
-                            <v-text-field v-model="empresa" label="Empresa" required></v-text-field>
-                            <v-textarea v-model="objetivoProyecto" label="Objetivo del Proyecto" required></v-textarea>
-                            <v-textarea v-model="alcanceProyecto" label="Alcance del Proyecto" required></v-textarea>
-                            <v-select v-model="estudio" :items="estudios" label="Estudio" required></v-select>
-                            <v-text-field v-model="montoInicial" label="Monto Inicial" required
-                                type="number"></v-text-field>
+                    <v-col xs="12" sm="10" md="10" lg="8" x="10" xxl="10">
+                        <v-card variant="outlined">
+                            <v-form>
+                                <v-container fluid>
+                                    <v-row>
+                                        <v-col cols="2">
+                                            <v-list-subheader style="font-weight: 800;">Nombre del
+                                                Proyecto</v-list-subheader>
+                                        </v-col>
 
-                        </v-form>
+                                        <v-col cols="8">
+                                            <v-text-field variant="outlined" v-model="nombreProyecto"
+                                                label="Nombre del Proyecto" required></v-text-field>
+                                        </v-col>
+                                    </v-row>
+
+                                    <v-row>
+                                        <v-col cols="2">
+                                            <v-list-subheader style="font-weight: 800;">Sector</v-list-subheader>
+                                        </v-col>
+
+                                        <v-col cols="8">
+                                            <v-text-field variant="outlined" v-model="sector" label="Sector"
+                                                required></v-text-field>
+                                        </v-col>
+                                    </v-row>
+
+                                    <v-row>
+                                        <v-col cols="2">
+                                            <v-list-subheader style="font-weight: 800;">Empresa</v-list-subheader>
+                                        </v-col>
+
+                                        <v-col cols="8">
+                                            <v-text-field variant="outlined" v-model="empresa" label="Empresa"
+                                                required></v-text-field>
+                                        </v-col>
+                                    </v-row>
+
+                                    <v-row>
+                                        <v-col cols="2">
+                                            <v-list-subheader style="font-weight: 800;">Objetivo del
+                                                Proyecto</v-list-subheader>
+                                        </v-col>
+
+                                        <v-col cols="8">
+                                            <v-textarea variant="outlined" v-model="alcanceProyecto"
+                                                label="Objetivo del Proyecto" required></v-textarea>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row>
+                                        <v-col cols="2">
+                                            <v-list-subheader style="font-weight: 800;">Monto Inicial</v-list-subheader>
+                                        </v-col>
+
+                                        <v-col cols="8">
+                                            <v-text-field variant="outlined" v-model="montoInicial" label="Monto Inicial"
+                                                required type="number"></v-text-field>
+                                        </v-col>
+                                    </v-row>
+                                </v-container>
+                            </v-form>
+                        </v-card>
+
                     </v-col>
                 </v-row>
             </tab-content>
             <tab-content title="Fase 2">
+                <h1>Analisis de Opciones</h1>
                 <v-row>
-                    <v-col xs="12" sm="10" md="8" lg="6" xl="4" xxl="3">
-                        <v-form ref="form">
-                            <v-text-field v-model="designacionGerente" label="Designación del Gerente"
-                                required></v-text-field>
-                            <v-text-field v-model="tecnologia" label="Tecnologia" required></v-text-field>
-                            <v-text-field v-model="ubicacion" label="Ubicación" required></v-text-field>
-                            <v-text-field v-model="montoInicial" label="Monto Inicial" required
-                                type="number"></v-text-field>
-                            <v-text-field v-model="cronograma" label="Cronograma" required></v-text-field>
-                            <v-checkbox v-model="tieneAlcancePreliminar" label="Tiene alcance preliminar"></v-checkbox>
-                            <v-select v-model="permisologia" :items="permisologias" label="Permisologia"
-                                required></v-select>
-                            <v-checkbox v-model="gestionAdquisicionLargoPlazo"
-                                label="Gestión de adquisición a largo plazo"></v-checkbox>
-                            <v-text-field v-model="baseProyecto" label="Base del proyecto" required></v-text-field>
-                        </v-form>
+                    <v-col xs="12" sm="10" md="10" lg="8" x="10" xxl="10">
+                        <v-card variant="outlined">
+                            <v-form ref="form">
+                                <v-container fluid>
+                                    <v-row>
+                                        <v-col col="2">
+                                            <v-list-subheader style="font-weight: 800;">Designación del
+                                                Gerente</v-list-subheader>
+                                        </v-col>
+                                        <v-col cols="8">
+                                            <v-text-field variant="outlined" v-model="designacionGerente"
+                                                label="Designación del Gerente" required></v-text-field>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row>
+                                        <v-col col="2">
+                                            <v-list-subheader style="font-weight: 800;">Tecnologia</v-list-subheader>
+                                        </v-col>
+                                        <v-col cols="8">
+                                            <v-text-field variant="outlined" v-model="tecnologia" label="Tecnologia"
+                                                required></v-text-field>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row>
+                                        <v-col col="2">
+                                            <v-list-subheader style="font-weight: 800;">Ubicación</v-list-subheader>
+                                        </v-col>
+                                        <v-col cols="8">
+                                            <v-text-field variant="outlined" v-model="ubicacion" label="Ubicación"
+                                                required></v-text-field>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row>
+                                        <v-col col="2">
+                                            <v-list-subheader style="font-weight: 800;">Monto Inicial</v-list-subheader>
+                                        </v-col>
+                                        <v-col cols="8">
+                                            <v-text-field variant="outlined" v-model="montoInicial" label="Monto Inicial"
+                                                required></v-text-field>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row>
+                                        <v-col col="2">
+                                            <v-list-subheader style="font-weight: 800;">Cronograma</v-list-subheader>
+                                        </v-col>
+                                        <v-col cols="8">
+                                            <v-date-picker></v-date-picker>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row>
+                                        <v-col col="2">
+                                            <v-list-subheader style="font-weight: 800;">Alcance
+                                                Preliminar</v-list-subheader>
+                                        </v-col>
+                                        <v-col cols="8">
+                                            <v-checkbox variant="outlined" v-model="tieneAlcancePreliminar"
+                                                label="Tiene alcance preliminar"></v-checkbox>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row>
+                                        <v-col col="2">
+                                            <v-list-subheader style="font-weight: 800;">Permisos</v-list-subheader>
+                                        </v-col>
+                                        <v-col cols="8">
+                                            <v-select variant="outlined" v-model="permisologia" :items="permisologias"
+                                                label="Permisologia" required></v-select>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row>
+                                        <v-col col="2">
+                                            <v-list-subheader style="font-weight: 800;">Gestion de adquisición a largo
+                                                plazo</v-list-subheader>
+                                        </v-col>
+                                        <v-col cols="8">
+
+                                            <v-checkbox v-model="gestionAdquisicionLargoPlazo"
+                                                label="Gestión de adquisición a largo plazo"></v-checkbox>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row>
+                                        <v-col col="2">
+                                            <v-list-subheader style="font-weight: 800;">Base del Proyecto</v-list-subheader>
+                                        </v-col>
+                                        <v-col cols="8">
+                                            <v-text-field variant="outlined" v-model="baseProyecto"
+                                                label="Base del proyecto" required></v-text-field>
+                                        </v-col>
+                                    </v-row>
+                                </v-container>
+                            </v-form>
+                        </v-card>
                     </v-col>
                 </v-row>
             </tab-content>
             <tab-content title="Fase 3">
+                <h1>Definición</h1>
                 <v-row>
-                    <v-col xs="12" sm="10" md="8" lg="6" xl="4" xxl="3">
-                        <v-form ref="form">
-                            <v-checkbox v-model="precisionAlcance" label="Precisión de alcance"></v-checkbox>
-                            <v-checkbox v-model="precisionSitioEjecucion"
-                                label="Precisión del sitio de ejecución"></v-checkbox>
-                            <v-checkbox v-model="precisionInterrelaciones"
-                                label="Precisión de interrelaciones"></v-checkbox>
-                            <v-checkbox v-model="obtencionPermisologia" label="Obtención de permisologia"></v-checkbox>
-                            <v-text-field v-model="asegurarTecnologiaProveedor"
-                                label="Aseguramiento de tecnologia o proveedor" required></v-text-field>
-                            <v-textarea v-model="conclusionDisenoBasico" label="Conclusión de diseño básico"
-                                required></v-textarea>
-                            <v-btn color="primary" @click="submit">
-                                Enviar
-                            </v-btn>
-                        </v-form>
+                    <v-col xs="12" sm="10" md="10" lg="8" x="10" xxl="10">
+                        <v-card variant="outlined">
+                            <v-form>
+                                <v-container fluid>
+                                    <v-row>
+                                        <v-col col="2">
+                                            <v-list-subheader style="font-weight: 800;">Precisión de
+                                                Alcance</v-list-subheader>
+                                        </v-col>
+                                        <v-col cols="8">
+                                            <v-text-field variant="outlined" v-model="precisionAlcance"
+                                                label="Precision de Alcance" required></v-text-field>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row>
+                                        <v-col col="2">
+                                            <v-list-subheader style="font-weight: 800;">Aseguramiento de
+                                                Tecnologia</v-list-subheader>
+                                        </v-col>
+                                        <v-col cols="8">
+                                            <v-text-field variant="outlined" v-model="asegurarTecnologiaProveedor"
+                                                label="Aseguramiento de Tecnologia" required></v-text-field>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row>
+                                        <v-col col="2">
+                                            <v-list-subheader style="font-weight: 800;">Conclusión de diseño
+                                                básico</v-list-subheader>
+                                        </v-col>
+                                        <v-col cols="8">
+                                            <v-textarea v-model="conclusionDisenoBasico" label="Conclusión de diseño básico"
+                                                required></v-textarea>
+                                        </v-col>
+                                    </v-row>
+                                </v-container>
+                            </v-form>
+                        </v-card>
+
                     </v-col>
                 </v-row>
             </tab-content>
             <tab-content title="Fase 4">
+                <h1>Ejecución</h1>
                 <v-row>
                     <v-col xs="12" sm="10" md="8" lg="6" xl="4" xxl="3">
                         <v-form ref="form">
@@ -108,6 +260,7 @@
                 </v-row>
             </tab-content>
             <tab-content title="Fase 5">
+                <h1>Cierre</h1>
                 <v-row>
                     <v-col xs="12" sm="10" md="8" lg="6" xl="4" xxl="3">
                         <v-form ref="form">
@@ -169,12 +322,12 @@ export default {
             tecnologia: "",
             ubicacion: "",
             cronograma: "",
+            precisionAlcance: "",
             tieneAlcancePreliminar: false,
             permisologias: ["Ninguna", "Permisos de construcción", "Permisos ambientales", "Permisos de seguridad"],
             permisologia: "",
             gestionAdquisicionLargoPlazo: false,
             baseProyecto: "",
-            precisionAlcance: false,
             precisionSitioEjecucion: false,
             precisionInterrelaciones: false,
             obtencionPermisologia: false,
@@ -200,6 +353,12 @@ export default {
             transferenciaGarantias: "",
         };
     },
+    props: {
+        shape: {
+            type: String,
+            default: 'circle'
+        },
+    }
 }
 </script>
 
